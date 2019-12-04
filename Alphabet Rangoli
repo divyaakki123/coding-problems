@@ -1,0 +1,73 @@
+/*
+You are given an integer, . Your task is to print an alphabet rangoli of size . (Rangoli is a form of Indian folk art based on creation of patterns.)
+
+The center of the rangoli has the first alphabet letter a, and the boundary has the  alphabet letter (in alphabetical order).
+
+Input Format
+
+Only one line of input containing , the size of the rangoli.
+
+Constraints
+
+
+Output Format
+
+Print the alphabet rangoli in the format explained above.
+
+Sample Input
+
+5
+Sample Output
+
+--------e--------
+------e-d-e------
+----e-d-c-d-e----
+--e-d-c-b-c-d-e--
+e-d-c-b-a-b-c-d-e
+--e-d-c-b-c-d-e--
+----e-d-c-d-e----
+------e-d-e------
+--------e--------
+
+*/
+//code:
+def print_rangoli(size):
+    x=(size*2-1)+(size*2-2)
+    k=x//2
+    j=1
+    l=j
+    c,d=0,0
+    for i in range(size*2-1):
+        c=0
+        z=96+size
+        print(k*'-',end="")
+        while(j):
+            y=chr(z)
+            print(y,end="")
+            if (x//2)==k+(l-j) or c==1:
+                z+=1
+                c=1
+            else:
+                z-=1
+            j-=1
+            if(j==0):
+                break
+            else:
+                print('-',end="")
+                j-=1
+        print(k*'-')
+        if d==0:
+            k-=2 
+        if(k==-2):
+            k=0
+            d=1
+        if d==1:
+            k+=2
+            j=l-4
+            l=j
+        else:
+            j=l+4
+            l=j
+if __name__ == '__main__':
+    n = int(input())
+    print_rangoli(n)
