@@ -1,0 +1,106 @@
+/*
+A game of tic-tac-toe is played on a  square grid. Each cell is either empty (denoted by '.') or occupied by one of the two players ('X' and 'O'). X goes first and then they take turns alternatively. If X is written three times in a straight line, then X wins and the game ends. The same goes for O. If there is no empty cell left, then the game ends as a draw.
+
+You are given the description of a game of tic-tac-toe. You have to determine the state of the game.
+
+The states of the game are as follows:
+
+If the game is invalid, that is, if there is no possibility of it happening, output "Wait, what?".
+If X has won, then print "X won." else if O has won print "O won.".
+If it is a draw, then print "It is a draw.".
+Otherwise, print whose turn it is, "X's turn." or "O's turn." accordingly.
+Sample Input 2
+
+...
+...
+...
+Sample Output 2
+
+X's turn.
+
+SAMPLE INPUT 
+O.X
+.OX
+..X
+
+SAMPLE OUTPUT 
+X won.
+*/
+
+//code:
+
+l=[]
+for i in range(3):
+    s=input()
+    l2=list(s)
+    l.extend(l2)
+cnt,cntx,cnto=0,0,0
+c=0
+for i in l:
+    if i=='.':
+        cnt+=1
+    elif i=='X':
+        p='X'
+        cntx+=1
+    else:
+        q='O'
+        cnto+=1
+if cnt+cntx+cnto==9:
+    if l[0]==l[1] and l[0]==l[2]:
+        if l[0]=='.':
+            pass
+        else:
+            c+=1;y=0
+    if l[0]==l[3] and l[6]==l[0]:
+        if l[0]=='.':
+            pass
+        else:
+            c+=1;y=0
+    if l[0]==l[4] and l[0]==l[8]:
+        if l[0]=='.':
+            pass
+        else:
+            c+=1;y=0
+    if l[6]==l[7] and l[6]==l[8]:
+        if l[6]=='.':
+            pass
+        else:
+            c+=1;y=6
+    if l[2]==l[5] and l[2]==l[8]:
+        if l[2]=='.':
+            pass
+        else:
+            c+=1;y=2
+    if l[2]==l[6] and l[2]==l[4]:
+        if l[2]=='.':
+            pass
+        else:
+            y=2;c+=1
+    if l[1]==l[4] and l[1]==l[7]:
+        if l[1]=='.':
+            pass
+        else:
+            y=1;c+=1
+    if l[3]==l[4] and l[3]==l[5]:
+        if l[3]=='.':
+            pass
+        else:
+            y=3;c+=1
+    if c==2 or c==1:
+        if c==2 and cntx==3 and cnto==3:
+            print("Wait, what?")
+        elif (l[y]=='O' and cntx==cnto) or (l[y]=='X' and cnto==cntx-1):
+            print(l[y],"won.")
+        else:
+            print("Wait, what?")
+    elif c>1:
+        print("Wait, what?")
+    elif cnt==0:
+        print("It's a draw.")
+    else:
+        if cntx==cnto+1:
+            print("O's turn.")
+        elif cnt==9 or cntx==cnto and c==0:
+            print("X's turn.")
+        else:
+            print("Wait, what?")
