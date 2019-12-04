@@ -1,0 +1,41 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+long long is_prime(long long i) {
+	long long x;
+	if(i<2) 
+		return 1;
+	else if(i==2)
+		return 0;
+	else if(i>2&&i%2==0)
+		return 1;
+	else
+		x=sqrt(i);
+		for(long long k=2;k<=x;k++) {
+			if(i%k==0)
+				return 1;
+		}
+		return 0;
+		
+}
+
+void prime(long long a,long long b) {
+	long long j=a;
+	while(j<=b) {
+		if(is_prime(j)==0) {
+			cout<<j<<endl;
+		}
+		j++;
+	}
+}
+int main() {
+	
+	int t;
+	cin>>t;
+	for(int i=0;i<t;i++) {
+		long long a,b;
+		cin>>a>>b;
+		prime(a,b);
+	}
+	return 0;
+}
